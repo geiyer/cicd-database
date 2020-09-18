@@ -1,0 +1,30 @@
+version: '3.5'
+
+services:
+  app:
+    container_name: api
+    build: .
+    depends_on:
+      - dbmigration
+    environment:
+      DATABASE_URL: postgres://postgres:Summer69@postgres:5432/bookstores-dev     
+      PORT: 7080
+    ports:
+      - "7080:7080"
+    command: npm run start
+    volumes:
+      - .:/app/
+      - /app/node_modules
+    networks:
+       - proxynet
+  dbmigration:
+      image: flyway/flyway
+      command: -url=jdbc:postgresql://postgres:5432/bookstores-dev -schemas=public -user=postgres -password=Summer69 migrate
+      volumes:
+        - .$PWD/migrations:/flyway/sql      
+      networks:
+       - proxynet
+
+networks:
+  proxynet:
+    name: postgres_default       

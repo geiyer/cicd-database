@@ -1,0 +1,3 @@
+
+ALTER TABLE Publishers
+ADD COLUMN website VARCHAR(10);

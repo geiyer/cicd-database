@@ -1,0 +1,15 @@
+CREATE TABLE Books 
+(ISBN VARCHAR(10), 
+Title VARCHAR(30), 
+PubDate DATE, 
+PubID SMALLINT, 
+Cost NUMERIC (5,2), 
+Retail NUMERIC (5,2), 
+Discount NUMERIC (4,2),
+Category VARCHAR(12)); 
+ 
+ 
+CREATE TABLE BOOKAUTHOR 
+(ISBN VARCHAR(10), 
+ AuthorID VARCHAR(4)); 
+ 
